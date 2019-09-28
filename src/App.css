@@ -1,22 +1,20 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.MenuNav div{
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background-color: orange;
+  height: 40px;
 }
 
-.App-link {
-  color: #09d3ac;
+.MenuNav li{
+  color: black;
+  display: inline;
+  text-decoration: none;
+	list-style: none;
+	border: 5px solid orange;
+  background-color: orange;
+  
+
+}
+
+.MenuNav a:hover{
+  background-color: red;
 }
