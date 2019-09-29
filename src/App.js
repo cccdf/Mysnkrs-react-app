@@ -1,49 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Fragment} from 'react';
+import ReactDOM from 'react-dom'
+import Container from "react-bootstrap/Container";
 import './App.css';
+import Header from "./Header";
 import getNikeApi from './getNikeApi'
 import NikeSnkrs from './NikeSnkrs';
-import MenuNav from './MenuNav'
+import { Row, Col } from 'react-bootstrap';
 
 
 export default class App extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      results: [],
-      navElements: ["News", "Login", "Sign Up", "Help", "About"],
-      navElementLinks: ["https://www.google.com/", "https://www.amazon.com/", "https://www.ebay.com/", "https://www.alibaba.com/"],
     }
   }
 
-  async componentDidMount(){
-    let response = await getNikeApi();
-    this.setState({results: response, loading: false});
-    
-    
-  }
+  
+
 
   render(){
     return(
-      <div>
-        <MenuNav 
-        navElements={this.state.navElements}
-        navElementLinks={this.state.navElementLinks}></MenuNav>
-        <ul>
-          <li>Nike
-              <p className='numberofResult'>{this.state.results.length} results</p>
-            <div>
-            {this.state.results.map((result) => {
-                return <NikeSnkrs result={result} key={result.id}></NikeSnkrs>
-              })}
-            </div>
-          </li>
-          <li>Adidas
+     <Fragment>
+       <Header />
+         <main className="my-5 py-5">
+           <Container className="px-0">
+             <Row noGutters className="pt-2 pt-md-5 w-100 px-4 px-xl-0 position-relative">
+               <Col xs={{ order: 2 }} md={{ size: 4, order: 1 }} tag="aside" className="pb-5 mb-5 pb-md-0 mb-md-0 mx-auto mx-md-0">
+                <NikeSnkrs></NikeSnkrs>
+               </Col>
+             </Row>
+           </Container>
+         </main>
 
-          </li>
-        </ul>
-        
-      </div>
+     </Fragment>
+       
+      
+
       
 
     );
